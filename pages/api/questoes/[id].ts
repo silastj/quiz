@@ -7,7 +7,7 @@ export default (req: any, res: any) => {
   const perguntaEncontrada = questoes.filter(questao => questao.id === perguntaId)
 
   if(perguntaEncontrada.length === 1){
-    const questaoSelecionada = perguntaEncontrada[0]
+    const questaoSelecionada = perguntaEncontrada[0].embaralharRespostas()
     res.status(200).json(questaoSelecionada.converterParaObjeto())
   }else{
     res.status(204).send()
