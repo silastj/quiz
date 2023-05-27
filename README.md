@@ -36,5 +36,67 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## LIB i18next - Translation
 - npm i next-i18next
+- No arquivo `next.config.js `
+-- iremos deixar assim: 
+`const {i18n} = require('./next-i18next.config')
 
--- depois 
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  images:{
+    domains: ['www.google.com.br']
+  },
+  headers: async () => {
+    return [
+      {
+        source: '/api/:path*',
+        headers: [
+          {key: 'Acess-Control-Allow-Origin', value: '*'}
+        ]
+      }
+    ]
+  },
+  i18n
+}
+
+module.exports = nextConfig
+`
+-- depois cria um arquivo na raiz chamado
+--- next-i18next.config.js
+`const path = require('path')
+
+module.exports = {
+  i18n:{
+    locales: ['pt', 'en'],
+    defaultLocale: 'en',
+    localeDetection: false,
+    localePath:path.resolve('./public/locales'),
+  },
+  reloadOnPrerender: process.env.NODE_ENV === 'development'
+} `
+
+- dentro da pasta raiz public criar a pasta locales dentro da pasta locales, criar pasta da linguagem ex: pasta en(english) e pasta pt(português)
+-- dentro da pasta en e pt criar um arquivo json chamado common.json
+`{
+  "welcome": "Welcome site!!",
+  "phrase": "You are viewing the site in",
+  "language": "Inglês"
+} `
+-- na pasta en, colocamos os valores de cada chave em inglês  e repetimos isso em português.
+- no arquivo __app.tsx iremos passar o:
+`import { appWithTranslation } from 'next-i18next'`
+- e passar o seu app como parametro `export default appWithTranslation(MyApp)`
+- já na página que vc irá usar a tradução: importar esses três abaixo:
+-- Iremos criar uma function com `import { GetStaticProps } from 'next' `
+-- Iremos passar esse serverSideTranslations `import { serverSideTranslations } from 'next-i18next/serverSideTranslations'` 
+-- Iremos usar o o hook da lib useTranslation `import { useTranslation } from 'next-i18next' `
+- Antes de export default criar a função abaixo: 
+`export const getStaticProps: GetStaticProps = async ({locale}) => {
+  return {
+    props:{
+      ...(await serverSideTranslations(locale as string, ['common']))
+    }
+  }
+}`
+
+## TEST nextJS
