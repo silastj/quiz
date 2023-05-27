@@ -100,3 +100,8 @@ module.exports = {
 }`
 
 ## TEST nextJS
+- tipos de teste:
+-- Unitário(Unit Test) `Testar uma unica função de soma`
+-- Teste de Integração(Integration Test) `Testar uma funcionalidade, ex: login , testar o funcionamento do login, ou excluir o produto. Testar  se o produto está sendo excluido `
+-- Teste end-to-end(e2e, end-2-end) `Simula um usuario navegando no sistema ou site`
+
