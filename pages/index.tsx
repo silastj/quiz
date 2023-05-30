@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
+import Header from '../components/Head'
 
 
 const Home = () => {
@@ -21,8 +22,13 @@ const Home = () => {
   const {t} = useTranslation('common')
 
   return (
+    <>
+   <Header 
+    title="Home"
+   />
     <div>
      <h1>{t("welcome")}</h1>
+     <Link className="login" href={'/login'}>Acessar Login</Link>
      <ul>
       {router.locales?.map((item, index) => (
         <li key={index}>
@@ -35,6 +41,7 @@ const Home = () => {
       <p>{t("phrase")}: <strong>{t("language")}</strong></p>    
       <Questao valor={questaoTeste}/>
     </div>
+    </>
   )
 }
 

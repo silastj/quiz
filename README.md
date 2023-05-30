@@ -105,3 +105,59 @@ module.exports = {
 -- Teste de Integração(Integration Test) `Testar uma funcionalidade, ex: login , testar o funcionamento do login, ou excluir o produto. Testar  se o produto está sendo excluido `
 -- Teste end-to-end(e2e, end-2-end) `Simula um usuario navegando no sistema ou site`
 
+
+
+
+- End-2-end ( Cypress )
+-- npm install -D cypress
+--- temos o comando `npx cypress open` ou add no `package.json` nos scripts:
+-- "cy:open": "cypress open",
+   "cy:run": "cypress run"
+
+- rodar o comando é: `npm run cy:open`
+-- no arquivo `cypress.config.ts` iremos adicionar alguns configurações 
+import { defineConfig } from "cypress";
+
+` export default defineConfig({
+  e2e: {
+    baseUrl: 'http://locahost:3000',
+    screenshotOnRunFailure: false,
+    video:false,
+    videoUploadOnPasses:false
+  },
+}); `
+
+- criaremos uma pasta dentro da pasta cypress com o name `e2e` e iremos testar página por página
+- dentro da pasta e2e iremos criar um arquivo `home.cy.ts`
+- iremos pensar como usuario(via browser)para criar os teste
+
+`
+describe('Home', () => {
+  //verificar se a home está ON
+  it('should load the page', () => {
+    cy.visit('/')
+  });
+  // verificar se está na linguagem en
+  it('should load the page in english', () => {
+    cy.visit('/')
+    cy.get('body').should('contain', 'You are viewing the site in')
+  });
+  // verificar se está pagina está em portugues com a frase X
+  it('should laod the page in wrong language', () => {
+    cy.visit('/')
+    cy.get('body').should('not.contain', 'Você está visualizando o site e')
+  })
+})
+`
+- rodar o comando npm run cy:open
+- escolher o e2e
+- escolher o electron
+- clicar no arquivo que criamos e aguarda o teste finalizar.
+
+
+
+
+
+
+## REACT HOOK FORM
+- npm install react-hook-form

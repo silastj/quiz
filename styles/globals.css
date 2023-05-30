@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap');
 
-html
-body {
+html,
+body,
+p {
   padding: 0;
   margin: 0;
   font-family: 'Roboto', sans-serif;
@@ -15,4 +16,12 @@ a {
 * {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+}
+
+.login{
+  border:1px solid red;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
 }
