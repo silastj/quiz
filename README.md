@@ -161,3 +161,5 @@ describe('Home', () => {
 
 ## REACT HOOK FORM
 - npm install react-hook-form
+
+-- usar o template `https://react-hook-form.com/get-started#Quickstart`
