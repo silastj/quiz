@@ -1,0 +1,40 @@
+.formHook{
+  display: flex;
+  flex-direction: column; 
+  padding: 40px 10px;
+  border:1px solid black;
+  border-radius: 10px;
+}
+
+.formHook>label{
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.formHook>input{
+  height: 30px;
+  margin-top: 2px;
+}
+
+.form>strong:last-child{
+  display: none;
+}
+
+.error{
+  font-size: 11px;
+  color: #bb0000;
+}
+
+.sucess{
+  font-size: 20px;
+  color: #01e00c;
+  text-align: center;
+}
+
+.recaptcha{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0;
+}

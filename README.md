@@ -163,3 +163,13 @@ describe('Home', () => {
 - npm install react-hook-form
 
 -- usar o template `https://react-hook-form.com/get-started#Quickstart`
+
+
+
+## FIREBASE
+- npm install firebase
+- npm install firebase-tools
+
+
+## RECAPTCHA
+- npm i react-google-recaptcha

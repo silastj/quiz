@@ -20,7 +20,7 @@ const Home = () => {
   ])
 
   const {t} = useTranslation('common')
-
+console.log('amós')
   return (
     <>
    <Header 
